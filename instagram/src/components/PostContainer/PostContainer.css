@@ -1,5 +1,8 @@
+.post-cont {
+  
+}
+
 .post {
-  border: 1px solid grey;
   display: flex;
   flex-direction: column;
   max-width: 500px;
