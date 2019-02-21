@@ -11,43 +11,25 @@ class CommentSection extends React.Component {
     };
   }
 
-  componentDidMount() {
-    const id = this.props.postId;
-    if (localStorage.getItem(id)) {
-      this.setState ({
-        comments : JSON.parse(localStorage.getItem(this.props.postId))
-      });
-    }
+  addNewComment = (event, i) => {
+    this.preventDefault();
+    const list = this.state.comment;
+    const newComment = this.event.target;
+    list.appendChild(newComment);
+    this.setState({
+      comment: [...this.state.comment, this.state.comments]
+    });
+  };
 
-    else {
-      this.setComm();
-    }
-  }
-
-  componentWillUnmount() {
-    this.setComm();
-  }
-
-  setComm = () => {
-    localStorage.setItem(
+  setComment = () => {
+    this.setItem(
       this.props.postId,
-      JSON.stringify(this.state.comments)
+      JSON.stringify(this.state.comment)
     );
   };
 
-  commentHandler = e => {
-    this.setState({ comment: e.target.value });
-  };
-
-  addComment = () => {
-    this.preventDefault();
-    const newComm = {text: this.state.comment, username: 'dev-admin'};
-    const comments = this.state.comments.slice();
-    comments.push(newComm);
-    this.setState({comments, comment: ''});
-    setTimeout(() => {
-      this.setComm();
-    }, 500);
+  commentHandler = event => {
+    this.setState({ comment: event.target.value });
   };
 
   render() {
@@ -56,7 +38,7 @@ class CommentSection extends React.Component {
         {this.state.comments.map((c, i) => <Comment key={i} comment={c} />)}
         <CommentForm
           comment={this.state.comment}
-          submitComment={this.addComment}
+          submitComment={this.addNewComment}
           changeComment={this.commentHandler}
         />
       </div>
