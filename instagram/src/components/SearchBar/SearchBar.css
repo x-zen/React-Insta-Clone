@@ -1,0 +1,36 @@
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  z-index: 99;
+  position: fixed;
+  background-color: white;
+
+}
+
+i {
+  font-size: 2.0rem;
+  margin: 0.5rem;
+}
+
+u {
+  font-size: 1.5rem;
+  margin: 10% 0.6rem;
+  text-decoration: none;
+  color: lightgrey;
+
+}
+
+.logos {
+  display: flex;
+}
+
+.search {
+  display: flex;
+  margin: 1rem;
+}
+
+.nav-btns {
+  display: flex;
+}
